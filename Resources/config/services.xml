@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="dw_varnish_cleaner.event.purge" class="DistrictWeb\VarnishCleanerBundle\Event\PurgeEvent" />
+        <service id="dw_varnish_cleaner.event.ban" class="DistrictWeb\VarnishCleanerBundle\Event\BanEvent" />
+
+        <service id="dw_varnish_cleaner.listener" class="DistrictWeb\VarnishCleanerBundle\Listener\Cleaner">
+            <tag name="kernel.event_listener" event="dw_varnish_cleaner" method="clean"/>
+        </service>
+
+    </services>
+</container>
